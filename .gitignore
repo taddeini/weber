@@ -4,6 +4,7 @@ bin
 TestResults
 *.testsettings
 *.jcsettings.xml
+*.Publish.xml
 *.suo
 *.cache
 *.bak
