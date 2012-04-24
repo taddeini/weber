@@ -9,38 +9,63 @@
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="Styles/Main.css">
 
-        <script type="text/javascript" src="Scripts/Libs/modernizr-2.5.3.min.js"> </script>
+        <script type="text/javascript" src="Scripts/Lib/modernizr-2.5.3.min.js"> </script>
     </head>
     <body>
-        <section role="main">
-            <article>
-                <header>   
-                    <h1>This is the Blog Post Article</h1>
-                    <p class="byline">Post on <time datetime="2012-03-29T23:31:45+01:00">March 29th 2012</time> by Copernicus Rex</p>
-                </header>
-                <p>Charles Krauthammer, it turns out, is a small-government conservative only as long as our small government keeps doing all the stuff that Charles Krauthammer gets a kick out of. Today he's unhappy about the <a target="_blank" href="http://www.washingtonpost.com/opinions/farewell-the-new-frontier/2012/04/19/gIQA49o8TT_story.html">end of the space shuttle program:</a></p> 
-                <blockquote> 
-                    <p>Is there a better symbol of willed American decline? The pity is not Discovery&rsquo;s retirement &mdash; beautiful as it was, the shuttle proved too expensive and risky to operate &mdash; but that it died without a successor. The planned follow-on &mdash; the Constellation rocket-capsule program <img src="http://www.motherjones.com/files/images/blog_space_shuttle_sunset.jpg" />to take humans back into orbit and from there to the moon &mdash; was suddenly canceled in 2010. And with that, control of manned spaceflight was gratuitously ceded to Russia and China.</p> 
-                    <p>....There are always excuses for putting off strenuous national endeavors: deficits, joblessness, poverty, whatever. But they shall always be with us....NASA will tell you that it&rsquo;s got a new program to go way beyond low-Earth orbit and, as per Obama&rsquo;s instructions, land on an asteroid by the mid-2020s. Considering that Constellation did not last even five years between birth and cancellation, don&rsquo;t hold your breath for the asteroid landing.</p> 
-                    <p>Nor for the private sector to get us back into orbit, as Obama assumes it will. True, hauling MREs up and trash back down could be done by private vehicles. But manned flight is infinitely more complex and risky, requiring massive redundancy and inevitably larger expenditures. Can private entities really handle that? And within the next lost decade or two?</p> 
-                </blockquote> 
-                <p>Krauthammer agrees that the shuttle was a boondoggle, but he wants a replacement program anyway. He agrees that deficits are a problem, but apparently not a problem that should be solved by cutting programs he thinks are cool. And although he's normally the country's biggest fan of private enterprise, he doesn't think the private sector is up to this particular task. That's a mighty fair-weather version of conservatism, I'd say.</p> 
-                <p>But the most annoying part of this column is that Krauthammer shamelessly sidles around the most important fact of all: the United States <em>isn't</em> retreating from space. We're only retreating from <em>manned space flight</em>. Our technology for boosting satellites and unmanned probes into space remains unmatched, and the technology that goes into those satellites and unmanned probes is phenomenal &mdash; and getting more phenomenal every year. They are marvels of advanced technology. If you want to insist that the federal government should spend gazillions of dollars making sure that there are always a few American citizens orbiting the earth, that's fine. But that's the argument you need to make. And when you make it, you need to keep in mind one of the oldest jokes about the shuttle program:</p> 
-                <blockquote> 
-                    <p>The purpose of the space shuttle is to take astronauts up to the space station. The purpose of the space station is to give the shuttle someplace to take the astronauts.</p> 
-                </blockquote> 
-                <p>Personally, I wouldn't mind spending some boondogglish money on a manned space program. I'm not a big fan, mind you, but I can think of worse things to flush our money away on. But I wonder if Krauthammer would agree to raise taxes on the wealthy in order to do it? That might tell us just how serious he really is about our supposedly &quot;willed decline.&quot;</p>
-                <p><a href="http://www.cbo.gov/publication/43175" target="_blank">According to the Congressional Budget Office,</a> the number of people receiving SNAP benefits (aka food stamps) will continue rising through 2014. Newt Gingrich will no doubt use this as an occasion to snark yet again about Barack Obama being a &quot;food stamp president,&quot; but among non-buffoons the takeaway from this is that the Great Recession is still nowhere near over. Technically it might have ended three years ago, but out in the real world things are still mighty fragile for a lot of people.</p> 
-                <p><img src="http://www.motherjones.com/files/images/blog_snap_participants.jpg"/></p>
-            </article>
-        </section>
-
-        <footer>
-        </footer>
+        <section id="main"></section>
 
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"> </script>
-        <script type="text/javascript"> window.jQuery || document.write('<script src="Scripts/Libs/jquery-1.7.1.min.js"><\/script>') </script>
+        <script type="text/javascript" src="Scripts/Lib/jquery.tmpl.min.js"> </script>
+        
+        <script type="text/javascript">
+            // TODO: Load should be pushed back as part of either Core or Services
+            var load = (function() {
+                return {
+                    feed: function(url, callback) {
+                        $.ajax({
+                            url: document.location.protocol + 
+                                "//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=" + 
+                                encodeURIComponent(url),
+                            dataType: "json",
+                            success: function(data) {
+                                callback(data.responseData.feed);
+                            }
+                        });
+                    }
+                };
+            }());
 
-        <!--<script src="js/script.js"> </script>-->
+            // TODO: Render should be pushed back as part of either Core or Services
+            var render = (function() {
+                return {
+                    post: function(post) {
+                        //TODO: Cache the compiled template here
+                        $("#postTemplate").tmpl(post).appendTo("#main");
+                    }
+                };
+            }());
+
+            var feed = load.feed("http://feeds.feedburner.com/tpm-news", function(feed) {
+                var postData = new post(feed.entries[3]);
+                render.post(postData);
+            });
+
+            //TODO: Hey, a nice little object here that needs to be tested
+            var post = function(raw) {
+                //TODO: Format date display items here
+                return raw;
+            };
+            
+        </script>
+        
+        <script type="text/x-jquery-tmpl" id="postTemplate">
+            <article>
+                <header>   
+                    <h1>${title}</h1>
+                    <p class="byline">Posted on <time datetime="2012-03-29T23:31:45+01:00">${publishedDate}</time> by ${author}</p>
+                </header>
+                {{html content}}
+            </article>   
+        </script>
     </body>
 </html>
