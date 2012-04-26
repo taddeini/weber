@@ -51,24 +51,25 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Index.htm" />
-    <Content Include="Scripts\Lib\jquery-1.7.1.min.js" />
-    <Content Include="Scripts\Lib\jquery.tmpl.min.js" />
-    <Content Include="Scripts\Lib\modernizr-2.5.3.min.js" />
-    <Content Include="Styles\Main.css" />
-    <Content Include="Web.config" />
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
+    <Content Include="assets\css\main.css" />
+    <Content Include="assets\js\libs\jquery-1.7.1.min.js" />
+    <Content Include="assets\js\libs\jquery.tmpl.min.js" />
+    <Content Include="assets\js\libs\modernizr-2.5.3.min.js" />
+    <Content Include="assets\css\qunit.css" />
+    <Content Include="index.htm" />
+    <Content Include="assets\js\libs\qunit.js" />
+    <Content Include="src\post.js" />
+    <Content Include="src\tests\post.tests.js" />
+    <Content Include="tests.htm" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Images\" />
+    <Folder Include="assets\images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
