@@ -5,12 +5,12 @@
 $(function() {
     
     test("NewPost_WithRawFeedData_FormatsPublishDisplayDate", function() {
-        var raw = { publishedDate: "Wed, 29 Oct 2011 14:14:48 +0000" };
+        var raw = { publishedDate: "Wed, 29 Oct 2011 23:14:48 +0000" };
         
         var testPost = new post(raw);
         var result = testPost.publishedDateDisplay();
         
-        equal(result, "October 29, 2011 9:14pm CDT");
+        equal(result, "October 29, 2011 6:14pm CDT");
     });
     
 });

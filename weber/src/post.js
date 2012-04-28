@@ -1,11 +1,10 @@
-﻿var post = function(raw) {
+﻿///<reference path="/assets/js/libs/moment.min.js" />
+
+//TODO: Time to modularize this, and excise the dependencies out into a facade (i.e. moment.js)
+var post = function(raw) {
 
     raw.publishedDateDisplay = function () {
-        var pubDate = new Date(raw.publishedDate);
-//        var month = pubDate.getMonth();
-//        var day = pubDate.getDay();
-//        var year = pubDate.getYear();
-//        return month + " " + day + ", " + year;
+        return moment(raw.publishedDate).format("MMMM DD, YYYY h:mma") + " CDT";
     };
 
     return raw;

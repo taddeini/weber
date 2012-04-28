@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\main.css" />
+    <Content Include="assets\js\libs\date.format.js" />
     <Content Include="assets\js\libs\jquery-1.7.1.min.js" />
     <Content Include="assets\js\libs\jquery.tmpl.min.js" />
     <Content Include="assets\js\libs\modernizr-2.5.3.min.js" />
