@@ -3,8 +3,12 @@
 //TODO: Time to modularize this, and excise the dependencies out into a facade (i.e. moment.js)
 var post = function(raw) {
 
-    raw.publishedDateDisplay = function () {
+    raw.pubDateDisplay = function () {
         return moment(raw.publishedDate).format("MMMM DD, YYYY h:mma") + " CDT";
+    };
+
+    raw.pubDateMeta = function() {
+        return moment(raw.publishedDate).format(); //defaults to ISO-8601
     };
 
     return raw;

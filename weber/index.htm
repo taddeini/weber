@@ -14,9 +14,9 @@
 
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script type="text/javascript" src="assets/js/libs/jquery.tmpl.min.js"></script>
-        
+        <script type="text/javascript" src="assets/js/libs/moment.min.js"></script>
+
         <script type="text/javascript" src="src/post.js"></script>
-        <script type="text/javascript" src="src/feed.js"></script>
         
         <script type="text/javascript">
             // TODO: Load should be pushed back as part of either Core or Services
@@ -57,7 +57,7 @@
             <article>
                 <header>   
                     <h1>${title}</h1>
-                    <p class="byline">Posted on <time datetime="2012-03-29T23:31:45+01:00">${publishedDate}</time> by ${author}</p>
+                    <p class="byline">Posted on <time datetime="${pubDateMeta}">${pubDateDisplay}</time> by ${author}</p>
                 </header>
                 {{html content}}
             </article>   
