@@ -1,8 +1,8 @@
 ﻿///<reference path="/assets/js/libs/moment.min.js"/>
 ///<reference path="/assets/js/libs/underscore.min.js"/>
-///<reference path="/src/sandbox.js"/>
+///<reference path="/src/utils.js"/>
 
-core = (function(moment, _) {
+application = (function(moment, _) {
     var _modules = { };
 
     return {
@@ -15,7 +15,7 @@ core = (function(moment, _) {
         
         start: function(moduleId) {
             _modules[moduleId].instance =
-                _modules[moduleId].initializer(new sandbox(this, moment));
+                _modules[moduleId].initializer(utils(this, moment));
             _modules[moduleId].instance.init();
         },
 

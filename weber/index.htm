@@ -17,11 +17,11 @@
         <script type="text/javascript" src="assets/js/libs/underscore.min.js"> </script>
         <script type="text/javascript" src="assets/js/libs/moment.min.js"> </script>
         
-        <script type="text/javascript" src="src/sandbox.js"></script>
+        <script type="text/javascript" src="src/utils.js"></script>
         <script type="text/javascript" src="src/post.js"> </script>
         
         <script type="text/javascript">
-            // TODO: Load should be pushed back as part of either Core or Services
+            // TODO: Load should be pushed back as part of either core or sandbox
             var load = (function() {
                 return {
                     feed: function(url, callback) {
@@ -38,7 +38,7 @@
                 };
             }());
 
-            // TODO: Render should be pushed back as part of either Core or Services
+            // TODO: Render should be pushed back as part of either core or sandbox
             var render = (function() {
                 return {
                     post: function(post) {
@@ -50,10 +50,11 @@
 
             // TODO: refactoring here--currently just wired up for prototyping
             var feed = load.feed("http://feeds.feedburner.com/LosTechies", function(feed) {
-                var sb = sandbox(moment);
-                var postData = post(sb).init(feed.entries[0]);
-                render.post(postData);
+                render.post(feed.entries[0]);
             });
+
+            application.register("post", post);
+            application.startAll();
 
         </script>
         

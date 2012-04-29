@@ -1,18 +1,20 @@
 ﻿///<reference path="/assets/js/libs/moment.min.js" />
 
-var post = function(sandbox) {
+var post = function(utils) {
     return {
-        init: function(postData) {
-            postData.pubDateDisplay = sandbox.formatDate({
-                date: postData.publishedDate,
+        init: function(args) {
+            var _postData = args.postData;
+
+            _postData.pubDateDisplay = utils.dates.formatDate({
+                date: _postData.publishedDate,
                 format: "MMMM DD, YYYY h:mma"
             }) + " CDT";
 
-            postData.pubDateMeta = sandbox.formatDate({
-                date: postData.publishedDate
+            _postData.pubDateMeta = utils.dates.formatDate({
+                date: _postData.publishedDate
             });
 
-            return postData;
+            return _postData;
         }
     };
 };
