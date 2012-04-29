@@ -6,13 +6,13 @@ audio:not([controls]) {display:none;}
 [hidden] {display:none;}
 
 html {-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;font-size:20px;}
-html, button, input, select, textarea {color:#222;font-family:"Times", sans-serif;}
-body {background-color:#eee;font-size:1em;line-height:1.5em;margin:0;}
+html, button, input, select, textarea {color:#333;font-family:"Times", sans-serif;}
+body {font-size:1em;line-height:1.5em;margin:0;}
 
 ::-moz-selection {background:#fe57a1;color:#fff;text-shadow:none;}
 ::selection {background:#fe57a1;color:#fff;text-shadow:none;}
 
-a {border-bottom:dashed 1px #999;color:#222;text-decoration:none;}
+a {border-bottom:dashed 1px #999;color:#333;text-decoration:none;}
 a:focus {outline:thin dotted;}
 a:hover, a:active {outline:0;}
 abbr[title] {border-bottom:1px dotted;}
@@ -62,7 +62,6 @@ td {vertical-align:top;}
 @media only screen and (min-width: 35em) { }
 
 h1 {font-size:2em;margin-bottom:0;margin-top:0.5em;}
-h1, h2, h3 {text-shadow:0px 1px 1px #FFF;}
 article {margin:1em;}
 article img {background-color:#fff;border:1px solid #ccc;display:block;margin:0.5em auto;padding:5px;}
 article blockquote img {float:right;margin:0.5em;}

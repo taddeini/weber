@@ -59,9 +59,13 @@
     <Content Include="assets\js\libs\moment.min.js" />
     <Content Include="index.htm" />
     <Content Include="assets\js\libs\qunit.js" />
+    <Content Include="assets\js\libs\underscore.min.js" />
     <Content Include="src\core.js" />
     <Content Include="src\post.js" />
+    <Content Include="src\sandbox.js" />
+    <Content Include="src\tests\core.tests.js" />
     <Content Include="src\tests\post.tests.js" />
+    <Content Include="src\tests\sandbox.tests.js" />
     <Content Include="tests.htm" />
   </ItemGroup>
   <ItemGroup>
@@ -69,9 +73,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\images\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
