@@ -1,10 +1,10 @@
-﻿///<reference path="/assets/js/libs/qunit.js"/> 
-///<reference path="/assets/js/libs/moment.min.js"/> 
-///<reference path="/src/utils.js"/>
+﻿///<reference path="/Assets/Scripts/Libs/qunit.js"/> 
+///<reference path="/Assets/Scripts/Libs/moment.min.js"/> 
+///<reference path="/Source/Utils.js"/>
 
-module("sanbox", {
+module("Utils", {
     setup: function() {
-        this.testUtils = utils(moment);
+        this.testUtils = Utils(moment);
     }
 });
 
