@@ -1,9 +1,6 @@
 ﻿///<reference path="/Assets/Scripts/Libs/moment.min.js"/>
 
-Utils = function(moment, $) {
-    var _moment = moment;
-    var _$ = $;
-
+var utils = function(moment, $) {
     return {
         dates: {
             formatDate: function(args) {
@@ -12,14 +9,14 @@ Utils = function(moment, $) {
                 if (isNaN(parsedDate)) {
                     return "n/a";
                 } else {
-                    return _moment(args.date).format(args.format);
+                    return moment(args.date).format(args.format);
                 }
             }
         },
         ajax: {
             getFeed: function(url, callback) {
                 //TODO: How to go about testing this? Should the google feed loader be part of this?
-                _$.ajax({
+                $.ajax({
                     url: document.location.protocol +
                         "//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=" +
                         encodeURIComponent(url),

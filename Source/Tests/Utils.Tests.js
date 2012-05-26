@@ -2,13 +2,13 @@
 ///<reference path="/Assets/Scripts/Libs/moment.min.js"/> 
 ///<reference path="/Source/Utils.js"/>
 
-module("Utils", {
+module("utils", {
     setup: function() {
-        this.testUtils = Utils(moment);
+        this.testUtils = utils(moment);
     }
 });
 
-test("ValidDate_FormatsAsCorrectly", function() {
+test("ValidDate_FormatsCorrectly", function() {
     var validDate = "Wed, 29 Oct 2011 23:14:48 +0000";
     var result = this.testUtils.dates.formatDate(
         {

@@ -22,10 +22,7 @@
         
         <script type="text/javascript">
 
-            var utils = Utils(moment, jQuery);
-
-            //TODO: Passing around utils all the time doesnt seem correct.
-            var feed = Feed(utils).init({ feedUrl: "http://feeds.feedburner.com/LosTechies" });
+            feed(utils(moment, jQuery)).init({ url: "http://feeds.feedburner.com/LosTechies" });
 
         </script>
         

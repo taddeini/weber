@@ -3,9 +3,9 @@
 ///<reference path="/Source/Utils.js"/>
 ///<reference path="/Source/Feed.js"/>
 
-module("Feed", {
+module("feed", {
     setup: function() {
-        this.testUtils = Utils(moment);
+        this.testUtils = utils(moment);
     }
 });
 
