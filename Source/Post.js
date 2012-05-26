@@ -15,6 +15,8 @@ var post = function(utils) {
             });
 
             return postData;
+        },        
+        render: function () {
         }
     };
 };
