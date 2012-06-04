@@ -5,7 +5,6 @@ var utils = function(moment, $) {
         dates: {
             formatDate: function(args) {
                 var parsedDate = Date.parse(args.date);
-
                 if (isNaN(parsedDate)) {
                     return "n/a";
                 } else {

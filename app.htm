@@ -30,52 +30,64 @@
         </script>
 
         <script type="text/javascript">
+
+            (function (global) {
+                global.Weber = Weber = {};
+
+                var helpers = utils(moment, $);
+
+                Backbone.Model.prototype.helpers = helpers;
+                Backbone.Collection.prototype.helpers = helpers;
             
-            var Post = Backbone.Model.extend({
-                initialize: function () {
-                    var helper = utils(moment, $);
+                Weber.Post = Backbone.Model.extend({
+                    initialize: function () {
 
-                    var pdDisplay = helper.dates.formatDate({
-                        date: this.get("publishedDate"),
-                        format: "MMMM D, YYYY h:mma"
-                    }) + " CDT";
+                        var pdDisplay = this.helpers.dates.formatDate({
+                            date: this.get("publishedDate"),
+                            format: "MMMM D, YYYY h:mma"
+                        }) + " CDT";
 
-                    var pdMeta = helper.dates.formatDate({ date: this.get("publishedDate") });
+                        var pdMeta = this.helpers.dates.formatDate({ date: this.get("publishedDate") });
 
-                    this.set({ publishedDateDisplay: pdDisplay, publishedDateMeta: pdMeta });
-                }
-            });
+                        this.set({ publishedDateDisplay: pdDisplay, publishedDateMeta: pdMeta });
+                    }
+                });
 
-            var Feed = Backbone.Collection.extend({
-                initialize: function (feedUrl, callback) {
-                    var that = this;
-                    utils(moment, $).ajax.getFeed(feedUrl, function (feed) {
-                        that.models = feed;
-                        callback(that);
-                    });
-                },
+                Weber.Feed = Backbone.Collection.extend({
+                    initialize: function (feedUrl, callbacks) {
+                        var that = this;
+                        
+                        this.helpers.ajax.getFeed(feedUrl, function (feed) {
+                            that.models = feed;
+                            _.each(callbacks, function (callback) { callback(that); });
+                        });
+                    },
 
-                model : Post
-            });
+                    model: Weber.Post
+                });
 
-            var PostView = Backbone.View.extend({
-                el: "#main",
+                Weber.PostView = Backbone.View.extend({
+                    el: "#main",
 
-                template: _.template($("#postTemplate").html()),
+                    template: _.template($("#postTemplate").html()),
 
-                render: function () {
-                    var content = this.template(this.model.attributes);
-                    this.$el.html(content);
-                    return this;
-                }
-            });
+                    render: function () {
+                        var content = this.template(this.model.attributes);
+                        this.$el.html(content);
+                        return this;
+                    }
+                });
+
+            }(this));
 
             $(function () {
-                new Feed("http://feeds.encosia.com/Encosia", function (feed) {
-                    var post = new Post(feed.models.entries[0]);
-                    var postView = new PostView({ model: post });
-                    postView.render();
-                });
+                new Weber.Feed("http://feeds.encosia.com/Encosia", [
+                    function (feed) {
+                        var post = new Weber.Post(feed.models.entries[0]);
+                        var postView = new Weber.PostView({ model: post });
+                        postView.render();
+                    }]
+                );
             }); 
         </script>
         

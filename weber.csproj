@@ -70,6 +70,7 @@
     <Content Include="app.htm" />
     <Content Include="assets\scripts\qunit.js" />
     <Content Include="assets\scripts\underscore.min.js" />
+    <None Include="readme.md" />
     <Content Include="source\utils.js" />
     <Content Include="source\tests\utils.tests.js" />
     <Content Include="tests.htm" />
