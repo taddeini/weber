@@ -1,4 +1,5 @@
 ﻿///<reference path="/scripts/libs/qunit.js"/> 
+///<reference path="/scripts/libs/sinon-1.3.4.js"/>
 
 module("postview", {
     setup: function () {
@@ -10,9 +11,15 @@ module("postview", {
 });
 
 test("Creating a post view initializes the view's template.", function () {
+    this.spy(Weber, "tmpl");
+    var view = new Weber.PostView();
+    
+    ok(typeof view.template !== "undefined");
+    ok(Weber.tmpl.calledOnce);
+    strictEqual(Weber.tmpl.getCall(0).args[0], "#postTemplate");
 });
 
-test("A post view should set the 'el' to the expected value.", function () {
+test("Creating a post view should set the 'el' selector.", function () {
     var view = new Weber.PostView();
-    strictEqual(view.el, '#main');
+    strictEqual(view.$el.selector, '#main');
 });
