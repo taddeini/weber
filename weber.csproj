@@ -61,18 +61,23 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="assets\css\main.css" />
-    <Content Include="assets\scripts\backbone-min.js" />
-    <Content Include="assets\scripts\jquery-1.7.1.min.js" />
-    <Content Include="assets\scripts\modernizr-2.5.3.min.js" />
-    <Content Include="assets\css\qunit.css" />
-    <Content Include="assets\scripts\moment.min.js" />
+    <Content Include="css\main.css" />
+    <Content Include="scripts\libs\backbone-min.js" />
+    <Content Include="scripts\libs\jquery-1.7.1.min.js" />
+    <Content Include="scripts\libs\modernizr-2.5.3.min.js" />
+    <Content Include="css\qunit.css" />
+    <Content Include="scripts\libs\moment.min.js" />
     <Content Include="app.htm" />
-    <Content Include="assets\scripts\qunit.js" />
-    <Content Include="assets\scripts\underscore.min.js" />
+    <Content Include="scripts\libs\qunit.js" />
+    <Content Include="scripts\libs\underscore.min.js" />
     <None Include="readme.md" />
-    <Content Include="source\utils.js" />
-    <Content Include="source\tests\utils.tests.js" />
+    <Content Include="scripts\models\post.js" />
+    <Content Include="scripts\tests\models\post.tests.js" />
+    <Content Include="scripts\tests\views\postview.tests.js" />
+    <Content Include="scripts\utils.js" />
+    <Content Include="scripts\tests\utils.tests.js" />
+    <Content Include="scripts\views\postview.js" />
+    <Content Include="scripts\weber.js" />
     <Content Include="tests.htm" />
   </ItemGroup>
   <ItemGroup>

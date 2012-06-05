@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Weber QUnit Test Results</title>
-        <link rel="stylesheet" href="assets/css/qunit.css">
+        <link rel="stylesheet" href="css/qunit.css">
     </head>
     <body>
         <h1 id="qunit-header">Weber QUnit Test Results</h1>
@@ -13,13 +13,25 @@
         <div id="qunit-fixture"></div>
         
         <!-- lib -->
-        <script type="text/javascript" src="assets/scripts/qunit.js"> </script>
-        <script type="text/javascript" src="assets/scripts/jquery-1.7.1.min.js"> </script>
-        <script type="text/javascript" src="assets/scripts/underscore.min.js"> </script>
-        <script type="text/javascript" src="assets/scripts/moment.min.js"> </script>
+        <script type="text/javascript" src="scripts/libs/qunit.js"> </script>
+        <script type="text/javascript" src="scripts/libs/jquery-1.7.1.min.js"> </script>
+        <script type="text/javascript" src="scripts/libs/underscore.min.js"> </script>
+        <script type="text/javascript" src="scripts/libs/moment.min.js"> </script>
+        <script type="text/javascript" src="scripts/libs/backbone-min.js"></script>
         
-        <script type="text/javascript" src="source/utils.js"></script>
-        <script type="text/javascript" src="source/tests/utils.tests.js"></script>
+        <!-- misc -->
+        <script type="text/javascript" src="scripts/utils.js"></script>
+        <script type="text/javascript" src="scripts/weber.js"></script>
+        <script type="text/javascript" src="scripts/tests/utils.tests.js"></script>
 
+        <!-- models -->
+        <script type="text/javascript" src="scripts/models/post.js"></script>
+        <script type="text/javascript" src="scripts/tests/models/post.tests.js"></script>
+
+        <!-- views -->
+        <script type="text/javascript" src="scripts/views/postview.js"></script>
+        <script type="text/javascript" src="scripts/tests/views/postview.tests.js"></script>
+ 
+    
     </body>
 </html>

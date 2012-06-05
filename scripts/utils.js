@@ -1,4 +1,4 @@
-﻿///<reference path="/assets/scripts/moment.min.js"/>
+﻿///<reference path="/scripts/libs/moment.min.js"/>
 
 var utils = function(moment, $) {
     return {
