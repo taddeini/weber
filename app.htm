@@ -54,18 +54,6 @@
                     model: Weber.Post
                 });
 
-                Weber.PostView = Backbone.View.extend({
-                    el: "#main",
-
-                    template: _.template($("#postTemplate").html()),
-
-                    render: function () {
-                        var content = this.template(this.model.attributes);
-                        this.$el.html(content);
-                        return this;
-                    }
-                });
-
             }(this));
 
             $(function () {
