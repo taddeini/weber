@@ -1,8 +1,6 @@
 ﻿///<reference path="/scripts/libs/qunit.js"/> 
 
-module("post", {
-    setup: function () { }
-});
+module("post", {});
 
 test("A new post with no arguments should set default property values.", function() {
     var post = new Weber.Post();

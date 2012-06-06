@@ -20,6 +20,8 @@
         <script type="text/javascript" src="scripts/utils.js"> </script>
         <script type="text/javascript" src="scripts/weber.js"> </script>
         <script type="text/javascript" src="scripts/models/post.js"> </script>
+        <script type="text/javascript" src="scripts/collections/feed.js"> </script>
+        <script type="text/javascript" src="scripts/views/postview.js"> </script>
         
         <script type="text/template" id="postTemplate">
             <article>
@@ -32,27 +34,8 @@
         </script>
 
         <script type="text/javascript">
-            
-            (function (global) {
-                global.Weber = Weber = {};
-
-                Weber.Feed = Backbone.Collection.extend({
-                    initialize: function (feedUrl, callbacks) {
-                        var that = this;
-                        
-                        this.helpers.ajax.getFeed(feedUrl, function (feed) {
-                            that.models = feed;
-                            _.each(callbacks, function (callback) { callback(that); });
-                        });
-                    },
-
-                    model: Weber.Post
-                });
-
-            }(this));
-
             $(function () {
-                new Weber.Feed("http://feeds.encosia.com/Encosia", [
+                new Weber.Feed("http://feeds.feedburner.com/KevinDrum", [
                     function (feed) {
                         var post = new Weber.Post(feed.models.entries[0]);
                         var postView = new Weber.PostView({ model: post });
@@ -61,7 +44,6 @@
                 );
             }); 
         </script>
-        
         
     </body>
 </html>

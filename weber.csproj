@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\main.css" />
+    <Content Include="scripts\collections\feed.js" />
     <Content Include="scripts\libs\backbone-min.js" />
     <Content Include="scripts\libs\jquery-1.7.1.min.js" />
     <Content Include="scripts\libs\modernizr-2.5.3.min.js" />
@@ -74,13 +75,15 @@
     <Content Include="scripts\libs\underscore.min.js" />
     <None Include="readme.md" />
     <Content Include="scripts\models\post.js" />
-    <Content Include="scripts\tests\models\post.tests.js" />
-    <Content Include="scripts\tests\views\postview.tests.js" />
+    <Content Include="scripts\collections\tests\feed.tests.js" />
+    <Content Include="scripts\models\tests\post.tests.js" />
+    <Content Include="scripts\views\tests\postview.tests.js" />
     <Content Include="scripts\utils.js" />
     <Content Include="scripts\tests\utils.tests.js" />
     <Content Include="scripts\views\postview.js" />
     <Content Include="scripts\weber.js" />
     <Content Include="tests.htm" />
+    <Content Include="scripts\tests\weber.tests.js" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />

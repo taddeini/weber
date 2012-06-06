@@ -3,13 +3,15 @@
 var utils = function(moment, $) {
     return {
         dates: {
-            formatDate: function(args) {
-                var parsedDate = Date.parse(args.date);
-                if (isNaN(parsedDate)) {
-                    return "n/a";
-                } else {
-                    return moment(args.date).format(args.format);
+            formatDate: function (args) {
+                var result = "n/a";
+                if (typeof args !== "undefined") {
+                    var parsedDate = Date.parse(args.date);
+                    if (!isNaN(parsedDate)) {
+                        result = moment(args.date).format(args.format);
+                    }
                 }
+                return result;
             }
         },
 
