@@ -36,11 +36,6 @@
             (function (global) {
                 global.Weber = Weber = {};
 
-                var helpers = utils(moment, $);
-
-                Backbone.Model.prototype.helpers = helpers;
-                Backbone.Collection.prototype.helpers = helpers;
-            
                 Weber.Feed = Backbone.Collection.extend({
                     initialize: function (feedUrl, callbacks) {
                         var that = this;

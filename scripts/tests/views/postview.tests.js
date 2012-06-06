@@ -3,14 +3,14 @@
 
 module("postview", {
     setup: function () {
-        $("body").append("<div id='postTemplate'></div>");
-    },
-    teardown: function () {
-        $("#postTemplate").remove();
+        var template = "<script id='postTemplate' type='text/template'><div><%=title%></div></script>";
+        var mainHtml = "<div id='main'></div>";
+        $("#qunit-fixture").append(template);
+        $("#qunit-fixture").append(mainHtml);
     }
 });
 
-test("Creating a post view initializes the view's template.", function () {
+test("Creating a view initializes the view's template.", function () {
     this.spy(Weber, "tmpl");
     var view = new Weber.PostView();
     
@@ -19,7 +19,17 @@ test("Creating a post view initializes the view's template.", function () {
     strictEqual(Weber.tmpl.getCall(0).args[0], "#postTemplate");
 });
 
-test("Creating a post view should set the 'el' selector.", function () {
+test("Creating a view should set the 'el' selector.", function () {
     var view = new Weber.PostView();
     strictEqual(view.$el.selector, '#main');
+});
+
+test("Rendering a view should hydrate the template with the model.", function () {
+    var model = new Weber.Post({ title: "foo" });
+    var view = new Weber.PostView({ model: model });
+
+    var result = view.render();
+
+    ok(typeof result !== "undefinded");
+    strictEqual(result.$el.html(), "<div>foo</div>");
 });
