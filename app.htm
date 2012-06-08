@@ -10,36 +10,50 @@
         <script type="text/javascript" src="scripts/libs/modernizr-2.5.3.min.js"> </script>
     </head>
     <body>
-        <section id="main"></section>
+        <section>
+            <ul id="feed"></ul>
+        </section>
+
+        <section>
+            <article id="detail"></article>
+        </section>
 
         <script type="text/javascript" src="scripts/libs/jquery-1.7.1.min.js"> </script>
         <script type="text/javascript" src="scripts/libs/underscore.min.js"> </script>
         <script type="text/javascript" src="scripts/libs/moment.min.js"> </script>
         <script type="text/javascript" src="scripts/libs/backbone-min.js"></script>
-        
         <script type="text/javascript" src="scripts/utils.js"> </script>
         <script type="text/javascript" src="scripts/weber.js"> </script>
         <script type="text/javascript" src="scripts/models/post.js"> </script>
         <script type="text/javascript" src="scripts/collections/feed.js"> </script>
-        <script type="text/javascript" src="scripts/views/postview.js"> </script>
+        <script type="text/javascript" src="scripts/views/postDetailView.js"> </script>
+        <script type="text/javascript" src="scripts/views/postSummaryView.js"> </script>
+        <script type="text/javascript" src="scripts/views/feedView.js"> </script>
         
-        <script type="text/template" id="postTemplate">
-            <article>
-                <header>   
-                    <h1><%= title%></h1>
-                    <p class="byline">Posted on <time datetime="<%= publishedDateMeta%>"><%= publishedDateDisplay%> CDT</time> by <%= author%></p>
-                </header>
-                <%= content%>
-            </article>   
+        <script type="text/template" id="postDetailTemplate">
+            <header>   
+                <h1><%= title%></h1>
+                <p class="byline">Posted on <time datetime="<%= publishedDateMeta%>"><%= publishedDateDisplay%> CDT</time> by <%= author%></p>
+            </header>
+            <%= content%>
+        </script>
+
+        <script type="text/template" id="postSummaryTemplate">
+            <header>
+                <h2><%= title%></h2>
+            </header>
         </script>
 
         <script type="text/javascript">
             $(function () {
                 new Weber.Feed("http://feeds.feedburner.com/KevinDrum", [
                     function (feed) {
-                        var post = new Weber.Post(feed.models.entries[0]);
-                        var postView = new Weber.PostView({ model: post });
-                        postView.render();
+                        var feedView = new Weber.FeedView({ collection: feed.models });
+                        feedView.render();
+
+                        var post = new Weber.Post(feed.models[0]);
+                        var postDetailView = new Weber.PostDetailView({ model: post });
+                        postDetailView.render();
                     }]
                 );
             }); 
