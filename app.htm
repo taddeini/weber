@@ -10,10 +10,9 @@
         <script type="text/javascript" src="scripts/libs/modernizr-2.5.3.min.js"> </script>
     </head>
     <body>
-        <section>
+        <aside>
             <ul id="feed"></ul>
-        </section>
-
+        </aside>
         <section>
             <article id="detail"></article>
         </section>
@@ -32,21 +31,24 @@
         
         <script type="text/template" id="postDetailTemplate">
             <header>   
-                <h1><%= title%></h1>
-                <p class="byline">Posted on <time datetime="<%= publishedDateMeta%>"><%= publishedDateDisplay%> CDT</time> by <%= author%></p>
+                <p class="byline">
+                    <time datetime="<%= publishedDateMeta%>"><%= publishedDateDisplay%> CDT</time> by <%= author%>
+                </p>
+                <h2><%= title%></h2>
             </header>
             <%= content%>
         </script>
 
         <script type="text/template" id="postSummaryTemplate">
             <header>
-                <h2><%= title%></h2>
+                <time datetime="<%= publishedDateMeta%>"><%= publishedDateDisplay%> CDT</time>
+                <h3><%= title%></h3>
             </header>
         </script>
 
         <script type="text/javascript">
             $(function () {
-                new Weber.Feed("http://feeds.feedburner.com/KevinDrum", [
+                new Weber.Feed("http://feeds.feedburner.com/LosTechies", [
                     function (feed) {
                         var feedView = new Weber.FeedView({ collection: feed.models });
                         feedView.render();
