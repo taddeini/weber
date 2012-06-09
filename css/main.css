@@ -5,9 +5,9 @@ audio, canvas, video {display:inline-block;}
 audio:not([controls]) {display:none;}
 [hidden] {display:none;}
 
-html {-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;font-size:20px;}
+html {-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;font-size:10px;}
 html, button, input, select, textarea {color:#666;font-family:Arial;}
-body {font-size:1em;margin:0;}
+body {margin:0;}
 
 ::-moz-selection {background:#fe57a1;color:#fff;text-shadow:none;}
 ::selection {background:#fe57a1;color:#fff;text-shadow:none;}
@@ -61,18 +61,25 @@ td {vertical-align:top;}
 
 @media only screen and (min-width: 35em) { }
 
-section, aside {display:table-cell;}
-section {border-left:1px solid #FFF;max-width:30%;}
-aside {border-right:1px solid #EEE;}
-article h2 {font-size:2em;padding-bottom:0.5em;margin:0.25em 0 1em;border-bottom:1px solid #EEE;}
 ul {padding:0;margin:0;list-style-type:none;}
-aside ul {margin:0.5em;}
-aside li {margin:1em 0;}
-aside h3 {font-size:0.8em;margin:0;}
-aside time {font-size:0.6em;color:#AAA;}
-article {margin:1em 2em;}
-article img {background-color:#fff;border:1px solid #ccc !important;display:block;margin:0.5em auto;padding:5px;}
-article blockquote img {float:right;margin:0.5em;}
+nav, section, aside {height:100%;}
+section {border-left:1px solid #FFF;}
+nav {width:30px;background-color:#333;left:0;}
+aside {border-right:1px solid #EEE;width:240px;position:fixed;overflow-y:scroll;}
+aside:hover {cursor:pointer;}
+aside ul {margin:1rem;}
+aside li {margin:2.4rem 0;}
+aside li .postSummary {padding:0.5rem;} 
+aside li .current {background-color:#EEE;}
+aside h3 {font-size:1.3rem;margin:0.3rem 0;}
+aside p {font-size:1.3rem;margin:0.3rem 0;color:#AAA;}
+aside time {font-size:1.1rem;color:#AAA;}
+article {margin:2rem 3rem 2rem 280px;font-size:1.4rem;line-height:2rem;}
+article h1 {font-size:3rem;line-height:3.4rem;padding-bottom:1.6rem;margin:0.5rem 0 2.8rem;border-bottom:1px solid #EEE;}
+article h2 {font-size:2rem;line-height:2.4rem;}
+article p, article ul, article ol, article blockquote {margin:2rem 0;}
+article img {background-color:#fff;border:1px solid #ccc !important;margin:0.5rem auto;padding:5px;}
+article blockquote img {float:right;margin:0.5rem;}
 article img[height="0"], article img[width="0"],
 article img[height="1"], article img[width="1"] {display:none;}
-p.byline {color:#999;margin:0;text-shadow:0px 1px 1px #FFF;font-size:0.8em;}
+article p.byline {color:#999;margin:0 0 1rem;text-shadow:0px 1px 1px #FFF;font-size:1.2rem;}

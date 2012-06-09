@@ -10,6 +10,7 @@
         <script type="text/javascript" src="scripts/libs/modernizr-2.5.3.min.js"> </script>
     </head>
     <body>
+        <nav></nav>
         <aside>
             <ul id="feed"></ul>
         </aside>
@@ -30,25 +31,30 @@
         <script type="text/javascript" src="scripts/views/feedView.js"> </script>
         
         <script type="text/template" id="postDetailTemplate">
-            <header>   
-                <p class="byline">
-                    <time datetime="<%= publishedDateMeta%>"><%= publishedDateDisplay%> CDT</time> by <%= author%>
-                </p>
-                <h2><%= title%></h2>
-            </header>
-            <%= content%>
+            <div class="postDetail" data-postId="<%= id%>">
+                <header>   
+                    <p class="byline">
+                        <time datetime="<%= publishedDateMeta%>"><%= publishedDateDisplay%> CDT</time> by <%= author%>
+                    </p>
+                    <h1><%= title%></h1>
+                </header>
+                <%= content%>
+            </div>
         </script>
 
         <script type="text/template" id="postSummaryTemplate">
-            <header>
-                <time datetime="<%= publishedDateMeta%>"><%= publishedDateDisplay%> CDT</time>
-                <h3><%= title%></h3>
-            </header>
+            <div class="postSummary" data-postId="<%= id%>">
+                <header>
+                    <time datetime="<%= publishedDateMeta%>"><%= publishedDateDisplay%></time>
+                    <h3><%= title%></h3>
+                </header>
+                <p><%= contentSnippet %></p>
+            </div>
         </script>
 
         <script type="text/javascript">
             $(function () {
-                new Weber.Feed("http://feeds.feedburner.com/LosTechies", [
+                new Weber.Feed("http://feeds.feedburner.com/nczonline", [
                     function (feed) {
                         var feedView = new Weber.FeedView({ collection: feed.models });
                         feedView.render();
@@ -58,7 +64,7 @@
                         postDetailView.render();
                     }]
                 );
-            }); 
+            });
         </script>
         
     </body>

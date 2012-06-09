@@ -1,7 +1,8 @@
 ﻿Weber.FeedView = Backbone.View.extend({
     el: "#feed",
 
-    initialize: function () { },
+    initialize: function () {
+    },
 
     render: function () {
         var items = [];

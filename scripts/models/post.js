@@ -1,12 +1,15 @@
 ﻿Weber.Post = Backbone.Model.extend({
     defaults: {
+        id: "",
         author: "",
         byline: "",
         title: "",
         publishedDate: null,
         publishedDateDisplay: "n/a",
         publishedDateMeta: "n/a",
-        content: ""
+        content: "",
+        contentSnippet: "",
+        isSelected: false
     },
 
     initialize: function () {
@@ -17,5 +20,10 @@
             }),
             publishedDateMeta: Weber.utils.dates.formatDate({ date: this.get("publishedDate") })
         });
+    },
+
+    setSelected: function (value) {
+        this.set({ "isSelected": value });
+        this.trigger("currentItem-changed", this);
     }
 });
