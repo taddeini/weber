@@ -29,3 +29,4 @@ test("Rendering of the feed view should contain a summary view for each post", f
     ok(typeof result !== "undefinded");
     strictEqual(result.$el.html(), "<li>foo</li><li>bar</li>");
 });
+

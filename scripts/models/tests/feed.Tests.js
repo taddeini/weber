@@ -3,7 +3,7 @@
 
 module("feed", {});
 
-test("Creating a feed with a 'posts' argument creates a collection of post models", function () {
+test("Creating a feed with posts entries creates a collection of post models", function () {
     var feed = new Weber.Feed({
         title: "foo",
         entries: [
@@ -19,7 +19,7 @@ test("Creating a feed with a 'posts' argument creates a collection of post model
     strictEqual(feed.posts.models[1].get("title"), "bar");
 });
 
-test("Creating a feed with no 'posts' argument creates an empty collection of posts", function () {
+test("Creating a feed with no post entries creates an empty post collection", function () {
     var feed = new Weber.Feed();
     ok(feed.posts.models);
     strictEqual(feed.posts.models.length, 0);

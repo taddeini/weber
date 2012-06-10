@@ -14,5 +14,5 @@
 
         this.$el.append(postItems);
         return this;
-    }
+    },
 });

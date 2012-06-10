@@ -43,7 +43,7 @@
         </script>
 
         <script type="text/template" id="postSummaryTemplate">
-            <div class="postSummary">
+            <div class="postSummary <% isSelected ? print('current') : '' %>">
                 <header>
                     <time datetime="<%= publishedDateMeta%>"><%= publishedDateDisplay%></time>
                     <h3><%= title%></h3>
@@ -54,12 +54,13 @@
 
         <script type="text/javascript">
             $(function () {
-                // Load up the feed
                 Weber.utils.ajax.getFeed("http://feeds.feedburner.com/nczonline", function (feedData) {
                     var feed = new Weber.Feed(feedData);
+                    feed.posts.models[0].set({ "isSelected": true });
                     var feedView = new Weber.FeedView({ model: feed });
                     feedView.render();
 
+                    // Load up a test feed for now until I can wire up some events
                     var postDetailView = new Weber.PostDetailView({ model: feed.posts.models[0] });
                     postDetailView.render();
                 });
