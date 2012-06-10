@@ -62,7 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\main.css" />
-    <Content Include="scripts\collections\feed.js" />
+    <Content Include="scripts\models\feed.js" />
     <Content Include="scripts\libs\backbone-min.js" />
     <Content Include="scripts\libs\jquery-1.7.1.min.js" />
     <Content Include="scripts\libs\modernizr-2.5.3.min.js" />
@@ -76,7 +76,7 @@
     <None Include="Properties\PublishProfiles\Profile1.pubxml" />
     <None Include="readme.md" />
     <Content Include="scripts\models\post.js" />
-    <Content Include="scripts\collections\tests\feed.Tests.js" />
+    <Content Include="scripts\models\tests\feed.Tests.js" />
     <Content Include="scripts\models\tests\post.Tests.js" />
     <Content Include="scripts\views\postSummaryView.js" />
     <Content Include="scripts\views\tests\feedView.Tests.js" />

@@ -5,15 +5,14 @@
     },
 
     render: function () {
-        var items = [];
+        var postItems = [];
 
-        _.each(this.collection, function (postData) {
-            var post = new Weber.Post(postData);
+        this.model.posts.each(function (post) {
             var postSummaryView = new Weber.PostSummaryView({ model: post });
-            items.push(postSummaryView.render().el);
+            postItems.push(postSummaryView.render().el);
         });
 
-        this.$el.append(items);
+        this.$el.append(postItems);
         return this;
     }
 });

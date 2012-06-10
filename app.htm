@@ -25,13 +25,13 @@
         <script type="text/javascript" src="scripts/utils.js"> </script>
         <script type="text/javascript" src="scripts/weber.js"> </script>
         <script type="text/javascript" src="scripts/models/post.js"> </script>
-        <script type="text/javascript" src="scripts/collections/feed.js"> </script>
+        <script type="text/javascript" src="scripts/models/feed.js"> </script>
         <script type="text/javascript" src="scripts/views/postDetailView.js"> </script>
         <script type="text/javascript" src="scripts/views/postSummaryView.js"> </script>
         <script type="text/javascript" src="scripts/views/feedView.js"> </script>
         
         <script type="text/template" id="postDetailTemplate">
-            <div class="postDetail" data-postId="<%= id%>">
+            <div class="postDetail">
                 <header>   
                     <p class="byline">
                         <time datetime="<%= publishedDateMeta%>"><%= publishedDateDisplay%> CDT</time> by <%= author%>
@@ -43,7 +43,7 @@
         </script>
 
         <script type="text/template" id="postSummaryTemplate">
-            <div class="postSummary" data-postId="<%= id%>">
+            <div class="postSummary">
                 <header>
                     <time datetime="<%= publishedDateMeta%>"><%= publishedDateDisplay%></time>
                     <h3><%= title%></h3>
@@ -54,16 +54,15 @@
 
         <script type="text/javascript">
             $(function () {
-                new Weber.Feed("http://feeds.feedburner.com/nczonline", [
-                    function (feed) {
-                        var feedView = new Weber.FeedView({ collection: feed.models });
-                        feedView.render();
+                // Load up the feed
+                Weber.utils.ajax.getFeed("http://feeds.feedburner.com/nczonline", function (feedData) {
+                    var feed = new Weber.Feed(feedData);
+                    var feedView = new Weber.FeedView({ model: feed });
+                    feedView.render();
 
-                        var post = new Weber.Post(feed.models[0]);
-                        var postDetailView = new Weber.PostDetailView({ model: post });
-                        postDetailView.render();
-                    }]
-                );
+                    var postDetailView = new Weber.PostDetailView({ model: feed.posts.models[0] });
+                    postDetailView.render();
+                });
             });
         </script>
         

@@ -17,5 +17,5 @@
 
     select: function () {
         this.model.setSelected(true);
-    },
+    }
 });

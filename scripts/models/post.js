@@ -1,6 +1,5 @@
 ﻿Weber.Post = Backbone.Model.extend({
     defaults: {
-        id: "",
         author: "",
         byline: "",
         title: "",
@@ -24,6 +23,5 @@
 
     setSelected: function (value) {
         this.set({ "isSelected": value });
-        this.trigger("currentItem-changed", this);
     }
 });

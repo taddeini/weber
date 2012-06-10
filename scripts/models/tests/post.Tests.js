@@ -1,10 +1,10 @@
 ﻿///<reference path="/scripts/libs/qunit.js"/> 
+///<reference path="/scripts/libs/sinon-1.3.4.js"/>
 
 module("post", {});
 
 test("A new post with no arguments should set default property values.", function() {
     var post = new Weber.Post();
-    strictEqual(post.get("id"), "");
     strictEqual(post.get("author"), "");
     strictEqual(post.get("byline"), "");
     strictEqual(post.get("title"), "");
@@ -24,4 +24,10 @@ test("A post with a valid published date should format it for display.", functio
 test("A post with a valid publish date should format it for meta data.", function () {
     var post = new Weber.Post({ publishedDate: "Wed, 02 Feb 2009 10:11:19 -0700" });
     strictEqual(post.get("publishedDateMeta"), "2009-02-02T11:11:19-06:00");
+});
+
+test("Setting seleted state on the model updates the property.", function () {
+    var post = new Weber.Post({ isSelected: false });
+    post.setSelected(true);
+    strictEqual(post.get("isSelected"), true);
 });
