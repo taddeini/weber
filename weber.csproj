@@ -88,7 +88,6 @@
     <Content Include="scripts\views\tests\postSummaryView.Tests.js" />
     <Content Include="scripts\weber.js" />
     <Content Include="tests.htm" />
-    <Content Include="scripts\tests\weber.tests.js" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />

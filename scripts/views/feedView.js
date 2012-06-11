@@ -2,6 +2,11 @@
     el: "#feed",
 
     initialize: function () {
+        if (!this.model) {
+            throw new Error("A model is required.");
+        }
+
+        this.model.posts.on("change:isSelected", this.render, this);
     },
 
     render: function () {
@@ -12,7 +17,7 @@
             postItems.push(postSummaryView.render().el);
         });
 
-        this.$el.append(postItems);
+        this.$el.html("").append(postItems);
         return this;
     },
 });

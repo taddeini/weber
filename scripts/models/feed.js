@@ -9,5 +9,8 @@
             });
             this.posts.add(postModels);
         }
+    },
+
+    setSelectedPost: function (postId) {
     }
 });
