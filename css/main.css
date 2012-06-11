@@ -62,20 +62,20 @@ td {vertical-align:top;}
 @media only screen and (min-width: 35em) { }
 
 ul {padding:0;margin:0;list-style-type:none;}
-nav, section, aside {height:100%;}
-section {border-left:1px solid #FFF;}
-nav {width:30px;background-color:#333;left:0;}
-aside {border-right:1px solid #EEE;width:240px;position:fixed;overflow-y:scroll;}
+nav, section, aside {height:100%;display:table-cell;}
+section {border-left:1px solid #FFF;padding-left:230px;}
+nav {width:30px;background-color:#333;position:fixed;}
+aside {border-right:1px solid #EEE;width:200px;overflow-y:scroll;position:fixed;left:30px;}
 aside:hover {cursor:pointer;}
 aside ul {margin:1rem;}
-aside li {margin:2.4rem 0;}
+aside li {margin:1.4rem 0;}
 aside li .postSummary {padding:0.5rem;} 
 aside li .current {background-color:#EEE;}
-aside h3 {font-size:1.3rem;margin:0.3rem 0;}
-aside p {font-size:1.3rem;margin:0.3rem 0;color:#AAA;}
+aside h3 {font-size:1.2rem;margin:0;}
+aside p {font-size:1.2rem;margin:0;color:#AAA;}
 aside time {font-size:1.1rem;color:#AAA;}
-article {margin:2rem 3rem 2rem 280px;font-size:1.4rem;line-height:2rem;}
-article h1 {font-size:3rem;line-height:3.4rem;padding-bottom:1.6rem;margin:0.5rem 0 2.8rem;border-bottom:1px solid #EEE;}
+article {margin:2rem 3rem 2rem 3em;font-size:1.4rem;line-height:2rem;}
+article h1 {font-size:3rem;line-height:3.4rem;padding-bottom:1.2rem;margin:0.5rem 0 3.6rem;border-bottom:1px solid #EEE;}
 article h2 {font-size:2rem;line-height:2.4rem;}
 article p, article ul, article ol, article blockquote {margin:2rem 0;}
 article img {background-color:#fff;border:1px solid #ccc !important;margin:0.5rem auto;padding:5px;}
