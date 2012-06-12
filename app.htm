@@ -27,7 +27,6 @@
         <script type="text/javascript" src="scripts/models/post.js"> </script>
         <script type="text/javascript" src="scripts/models/feed.js"> </script>
         <script type="text/javascript" src="scripts/views/postDetailView.js"> </script>
-        <script type="text/javascript" src="scripts/views/postSummaryView.js"> </script>
         <script type="text/javascript" src="scripts/views/feedView.js"> </script>
         
         <script type="text/template" id="postDetailTemplate">
@@ -43,13 +42,13 @@
         </script>
 
         <script type="text/template" id="postSummaryTemplate">
-            <div class="postSummary <% isSelected ? print('current') : '' %>">
+            <li class="postSummary <% isSelected ? print('current') : '' %>">
                 <header>
                     <time datetime="<%= publishedDateMeta%>"><%= publishedDateDisplay%></time>
                     <h3><%= title%></h3>
                 </header>
                 <p><%= contentSnippet %></p>
-            </div>
+            </li>
         </script>
 
         <script type="text/javascript">

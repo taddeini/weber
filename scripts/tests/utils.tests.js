@@ -8,25 +8,25 @@ module("utils", {
 });
 
 test("A valid date with a format string should format correctly.", function() {
-    var validDate = "Wed, 29 Oct 2011 23:14:48 +0000";
-    var result = this.testUtils.dates.formatDate(
-    {
-        date: validDate,
-        format: "MMM DD, YYYY h:mm:ss"
-    });
+    var validDate = "Wed, 29 Oct 2011 23:14:48 +0000",
+        result = this.testUtils.dates.formatDate(
+        {
+            date: validDate,
+            format: "MMM DD, YYYY h:mm:ss"
+        });
 
     strictEqual(result, "Oct 29, 2011 6:14:48");
 });
 
 test("A valid date with no format string should default to ISO-8601 formatting.", function () {
-    var validDate = "Wed, 29 Oct 2011 23:14:48 +0000";
-    var result = this.testUtils.dates.formatDate({ date: validDate });
+    var validDate = "Wed, 29 Oct 2011 23:14:48 +0000",
+        result = this.testUtils.dates.formatDate({ date: validDate });
     strictEqual(result, "2011-10-29T18:14:48-05:00");
 });
 
 test("An invalid date should format to 'n/a'.", function() {
-    var invalidDate = "Wed, 29 Oct 2009 abc -0700";
-    var result = this.testUtils.dates.formatDate({ date: invalidDate });
+    var invalidDate = "Wed, 29 Oct 2009 abc -0700",
+        result = this.testUtils.dates.formatDate({ date: invalidDate });
     strictEqual(result, "n/a");
 });
 

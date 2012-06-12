@@ -3,8 +3,8 @@
 
 module("feedView", {
     setup: function () {
-        var templateTag = "<script id='postSummaryTemplate' type='text/template'><%=title%></script>";
-        var feedEl = "<div id='feed'></div>";
+        var templateTag = "<script id='postSummaryTemplate' type='text/template'><li><%=title%></li></script>",
+            feedEl = "<div id='feed'></div>";
         $("#qunit-fixture").append(templateTag);
         $("#qunit-fixture").append(feedEl);
     }
@@ -27,6 +27,7 @@ test("Creating a view should set the 'el' selector.", function () {
 });
 
 test("Creating a view should bind render to the post collection change event", function () {
+    
     var feed = new Weber.Feed({
         entries: [{ title: "foo" }, { title: "bar" }]
     });
@@ -39,11 +40,10 @@ test("Creating a view should bind render to the post collection change event", f
 
 test("Rendering of the feed view should contain a summary view for each post", function () {
     var feed = new Weber.Feed({
-        entries: [{ title: "foo" }, { title: "bar" }]
-    });
-    var view = new Weber.FeedView({ model: feed });
-
-    var result = view.render();
+            entries: [{ title: "foo" }, { title: "bar" }]
+        }),
+        view = new Weber.FeedView({ model: feed }),
+        result = view.render();
 
     ok(typeof result !== "undefinded");
     strictEqual(result.$el.html(), "<li>foo</li><li>bar</li>");

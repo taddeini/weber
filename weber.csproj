@@ -78,14 +78,12 @@
     <Content Include="scripts\models\post.js" />
     <Content Include="scripts\models\tests\feed.Tests.js" />
     <Content Include="scripts\models\tests\post.Tests.js" />
-    <Content Include="scripts\views\postSummaryView.js" />
     <Content Include="scripts\views\tests\feedView.Tests.js" />
     <Content Include="scripts\views\tests\postDetailView.Tests.js" />
     <Content Include="scripts\utils.js" />
     <Content Include="scripts\tests\utils.tests.js" />
     <Content Include="scripts\views\postDetailView.js" />
     <Content Include="scripts\views\feedView.js" />
-    <Content Include="scripts\views\tests\postSummaryView.Tests.js" />
     <Content Include="scripts\weber.js" />
     <Content Include="tests.htm" />
   </ItemGroup>

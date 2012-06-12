@@ -3,8 +3,8 @@
 
 module("postDetailView", {
     setup: function () {
-        var templateTag = "<script id='postDetailTemplate' type='text/template'><header><%=title%></header></script>";
-        var elTag = "<section id='detail'></section>"
+        var templateTag = "<script id='postDetailTemplate' type='text/template'><header><%=title%></header></script>",
+            elTag = "<section id='detail'></section>"
         $("#qunit-fixture").append(templateTag);
         $("#qunit-fixture").append(elTag);
     }
@@ -25,10 +25,9 @@ test("Creating a view should set the 'el' to 'main'", function () {
 });
 
 test("Rendering a view should hydrate the template with the model.", function () {
-    var post = new Weber.Post({ title: "foo" });
-    var view = new Weber.PostDetailView({ model: post });
-
-    var result = view.render();
+    var post = new Weber.Post({ title: "foo" }),
+        view = new Weber.PostDetailView({ model: post }),
+        result = view.render();
 
     ok(typeof result !== "undefinded");
     strictEqual(result.$el.html(), "<header>foo</header>");
