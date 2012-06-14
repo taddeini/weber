@@ -12,6 +12,10 @@
     },
 
     initialize: function () {
+        if (!this.get("id")) {
+            throw new Error("A post id is required.");
+        }
+
         this.set({
             publishedDateDisplay: Weber.utils.dates.formatDate({
                 date: this.get("publishedDate"),

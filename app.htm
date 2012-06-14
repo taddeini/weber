@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="">
-        <meta name="viewport" content="width=2048px">
+        <meta name="viewport" content="width=2048">
         <link rel="stylesheet" href="css/main.css">
         <script type="text/javascript" src="scripts/libs/modernizr-2.5.3.min.js"> </script>
     </head>
@@ -42,7 +42,7 @@
         </script>
 
         <script type="text/template" id="postSummaryTemplate">
-            <li class="postSummary <% isSelected ? print('current') : '' %>">
+            <li class="postSummary <% isSelected ? print('current') : '' %>" data-id=<%= id%>>
                 <header>
                     <time datetime="<%= publishedDateMeta%>"><%= publishedDateDisplay%></time>
                     <h3><%= title%></h3>
@@ -55,12 +55,12 @@
             $(function () {
                 Weber.utils.ajax.getFeed("http://feeds.feedburner.com/LosTechies", function (feedData) {
                     var feed = new Weber.Feed(feedData);
-                    feed.posts.models[2].set({ "isSelected": true });
+                    feed.posts.models[4].set({ "isSelected": true });
                     var feedView = new Weber.FeedView({ model: feed });
                     feedView.render();
 
                     // Load up a test feed for now until I can wire up some events
-                    var postDetailView = new Weber.PostDetailView({ model: feed.posts.models[2] });
+                    var postDetailView = new Weber.PostDetailView({ model: feed.posts.models[4] });
                     postDetailView.render();
                 });
             });

@@ -69,17 +69,15 @@ section {border-left:1px solid #FFF;overflow-y:scroll;position:fixed;left:732px;
 aside:hover {cursor:pointer;}
 aside {font-size:2.8rem;}
 aside ul {margin:1rem;}
-aside li {margin:1.4rem 0;}
-aside li .postSummary {padding:1rem;} 
-aside li .current {background-color:#EEE;}
-aside h3 {margin:0;}
+aside li {margin:3rem 0;padding:1rem;}
+aside li.current {background-color:#EEE;}
+aside h3 {margin:0;font-size:1em;}
 aside p {margin:0;color:#AAA;}
 aside time {font-size:2.2rem;color:#AAA;}
-article {margin:2rem 3rem;font-size:3.2rem;line-height:2rem;}
-article h1 {font-size:6rem;line-height:6rem;padding-bottom:1.2rem;margin:0.5rem 0 3.6rem;border-bottom:1px solid #EEE;}
+article {margin:2rem 3rem 2rem 6rem;font-size:3.2rem;line-height:2rem;}
+article h1 {font-size:6rem;line-height:6rem;padding-bottom:2rem;margin:0.5rem 0 4rem;border-bottom:1px solid #EEE;}
 article h2 {font-size:4rem;line-height:2.4rem;}
 article p, article ul, article ol, article blockquote {margin:5rem 0;line-height:5rem;}
-article p img {width:90%;}
 article img {background-color:#fff;border:1px solid #ccc !important;margin:0.5rem auto;padding:5px;}
 article blockquote img {float:right;margin:0.5rem;}
 article img[height="0"], article img[width="0"],

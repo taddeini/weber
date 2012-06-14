@@ -25,7 +25,7 @@ test("Creating a view should set the 'el' to 'main'", function () {
 });
 
 test("Rendering a view should hydrate the template with the model.", function () {
-    var post = new Weber.Post({ title: "foo" }),
+    var post = new Weber.Post({ id: 1, title: "foo" }),
         view = new Weber.PostDetailView({ model: post }),
         result = view.render();
 

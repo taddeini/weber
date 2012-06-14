@@ -17,6 +17,9 @@ test("Creating a feed with posts entries creates a collection of post models", f
     strictEqual(feed.posts.models.length, 2);
     strictEqual(feed.posts.models[0].get("title"), "foo");
     strictEqual(feed.posts.models[1].get("title"), "bar");
+    // Currently, the feed will create internal identifiers for each created post
+    strictEqual(feed.posts.models[0].get("id"), 1);
+    strictEqual(feed.posts.models[1].get("id"), 2);
 });
 
 test("Creating a feed with no post entries creates an empty post collection", function () {

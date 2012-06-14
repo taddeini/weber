@@ -11,14 +11,17 @@
         }
 
         this.template = Weber.tmpl("#postSummaryTemplate");
-        this.model.posts.on("change:isSelected", this.render, this);
+        this.model.posts.on("change", this.render, this);
     },
 
     render: function () {
         var postItems = [],
             that = this,
             content;
-        
+
+        //Clear out current results
+        this.$el.html("");
+
         this.model.posts.each(function (post) {
             content = that.template(post.toJSON());
             that.$el.append(content);
@@ -28,6 +31,18 @@
     },
 
     select: function (evt) {
-        //var id = $(evt.currentTarget).data("id");
+        var id = $(evt.currentTarget).data("id");
+
+        this.model.posts.each(function (post) {
+            var isSelectedId = (post.get("id") === id),
+                isSelected = post.get("isSelected");
+
+            if (isSelectedId && !isSelected) {
+                post.set({ "isSelected": true });
+            }
+            else if (!isSelectedId && isSelected) {
+                post.set({ "isSelected": false });
+            }
+        });
     }
 });
