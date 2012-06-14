@@ -27,5 +27,9 @@
 
     setSelected: function (value) {
         this.set({ "isSelected": value });
+    },
+
+    isSelected: function () {
+        return this.get("isSelected");
     }
 });

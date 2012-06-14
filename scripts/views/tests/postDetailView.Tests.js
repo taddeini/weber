@@ -4,15 +4,28 @@
 module("postDetailView", {
     setup: function () {
         var templateTag = "<script id='postDetailTemplate' type='text/template'><header><%=title%></header></script>",
-            elTag = "<section id='detail'></section>"
+            postEl = "<section id='detail'></section>";
+
         $("#qunit-fixture").append(templateTag);
-        $("#qunit-fixture").append(elTag);
+        $("#qunit-fixture").append(postEl);
+    }
+});
+
+test("Creating a view without a model should throw an error", function () {
+    try {
+        var view = new Weber.PostDetailView();
+        ok(false, "An error should have been thrown.");
+    }
+    catch (error) {
+        ok(true);
+        strictEqual(error.message, "A model is required.");
     }
 });
 
 test("Creating a view initializes the view's template.", function () {
+    var feed = new Weber.Feed({ entries: [{ id: 1, title: "foo" }] });
     this.spy(Weber, "tmpl");
-    var view = new Weber.PostDetailView();
+    var view = new Weber.PostDetailView({ model: feed });
     
     ok(typeof view.template !== "undefined");
     ok(Weber.tmpl.calledOnce);
@@ -20,13 +33,21 @@ test("Creating a view initializes the view's template.", function () {
 });
 
 test("Creating a view should set the 'el' to 'main'", function () {
-    var view = new Weber.PostDetailView();
+    var feed = new Weber.Feed({ entries: [{ id: 1, title: "foo" }] });
+    var view = new Weber.PostDetailView({ model: feed });
     strictEqual(view.$el.selector, '#detail');
 });
 
-test("Rendering a view should hydrate the template with the model.", function () {
-    var post = new Weber.Post({ id: 1, title: "foo" }),
-        view = new Weber.PostDetailView({ model: post }),
+test("Creating a view should bind render to the post change event", function () {
+    var feed = new Weber.Feed({ entries: [{ id: 1, title: "foo" }] });
+    this.spy(feed.posts, "on");
+    var view = new Weber.PostDetailView({ model: feed });
+    ok(feed.posts.on.calledOnce);
+});
+
+test("Rendering a view should hydrate the template with the selected model.", function () {
+    var feed = new Weber.Feed({ entries: [{ id: 1, title: "foo", isSelected: true }] });
+    var view = new Weber.PostDetailView({ model: feed }),
         result = view.render();
 
     ok(typeof result !== "undefinded");

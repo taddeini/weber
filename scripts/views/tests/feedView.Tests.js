@@ -7,7 +7,7 @@ module("feedView", {
             feedEl = "<div id='feed'></div>";
             feed = new Weber.Feed({
                 entries: [{ id: 1, title: "foo" }, { id: 2, title: "bar" }]
-            })
+            });
             
         $("#qunit-fixture").append(templateTag);
         $("#qunit-fixture").append(feedEl);
@@ -44,19 +44,21 @@ test("Rendering of the feed view should contain a summary view for each post", f
     strictEqual(result.$el.html(), "<li>foo</li><li>bar</li>");
 });
 
-test("Selecting a post marks it as current, and de-selects other posts.", function () {
-    var view = new Weber.FeedView({
-        model: feed = new Weber.Feed({
-            entries: [
-                { id: 1, title: "foo", isSelected: false },
-                { id: 2, title: "bar", isSelected: true }]
-        })
-    })
-    var postMarkup = "<div id='mockPost' data-id='1' />";
+test("Selecting a post calls the feed model setSeleted with the selected id.", function () {
+    feed = new Weber.Feed({
+        entries: [
+            { id: 99, title: "foo", isSelected: false },
+            { id: 100, title: "bar", isSelected: true }]
+    });
+
+    this.spy(feed, "setSelectedPost");
+    var view = new Weber.FeedView({ model: feed }),
+        postMarkup = "<div id='mockPost' data-id='99' />";
+
     $("#qunit-fixture").append(postMarkup);
 
     view.select({ currentTarget: '#mockPost' });
 
-    ok(feed.posts.models[0].get("isSelected"));
-    ok(!feed.posts.models[1].get("isSelected"));
+    ok(feed.setSelectedPost.calledOnce);
+    strictEqual(feed.setSelectedPost.getCall(0).args[0], 99);
 });

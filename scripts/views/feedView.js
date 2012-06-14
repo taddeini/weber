@@ -32,17 +32,6 @@
 
     select: function (evt) {
         var id = $(evt.currentTarget).data("id");
-
-        this.model.posts.each(function (post) {
-            var isSelectedId = (post.get("id") === id),
-                isSelected = post.get("isSelected");
-
-            if (isSelectedId && !isSelected) {
-                post.set({ "isSelected": true });
-            }
-            else if (!isSelectedId && isSelected) {
-                post.set({ "isSelected": false });
-            }
-        });
+        this.model.setSelectedPost(id);
     }
 });

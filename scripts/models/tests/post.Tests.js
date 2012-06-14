@@ -56,5 +56,10 @@ test("A post with a valid publish date should format it for meta data.", functio
 test("Setting selected state on the model updates the property.", function () {
     var post = new Weber.Post({ id: 1, isSelected: false });
     post.setSelected(true);
-    strictEqual(post.get("isSelected"), true);
+    ok(post.get("isSelected"));
+});
+
+test("Getting selected state return the property value.", function () {
+    var post = new Weber.Post({ id: 1, isSelected: true });
+    ok(post.isSelected())
 });

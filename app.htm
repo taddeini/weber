@@ -55,12 +55,13 @@
             $(function () {
                 Weber.utils.ajax.getFeed("http://feeds.feedburner.com/LosTechies", function (feedData) {
                     var feed = new Weber.Feed(feedData);
-                    feed.posts.models[4].set({ "isSelected": true });
+                    feed.posts.models[0].setSelected(true);
+                    
                     var feedView = new Weber.FeedView({ model: feed });
                     feedView.render();
 
                     // Load up a test feed for now until I can wire up some events
-                    var postDetailView = new Weber.PostDetailView({ model: feed.posts.models[4] });
+                    var postDetailView = new Weber.PostDetailView({ model: feed });
                     postDetailView.render();
                 });
             });

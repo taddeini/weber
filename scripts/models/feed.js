@@ -18,5 +18,15 @@
     },
 
     setSelectedPost: function (postId) {
+        this.posts.each(function (post) {
+            var isSelectedId = (post.get("id") === postId)
+
+            if (isSelectedId && !post.isSelected()) {
+                post.setSelected(true);
+            }
+            else if (!isSelectedId && post.isSelected()) {
+                post.setSelected(false);
+            }
+        });
     }
 });
